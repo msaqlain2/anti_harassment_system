@@ -14,7 +14,7 @@ if($row['status'] == 0) {
 			        	$status = "<span class='badge rounded-pill bg-dark text-light p-2'>Closed</span>";
 			        }
 	        if($row['complaint_related_docs'] == null){
-	        	echo "Not Found";
+	        	
 	        }
 
 ?>

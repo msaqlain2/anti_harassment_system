@@ -45,7 +45,14 @@ require_once('php_scripts/student/complaint_history/view_complaint_history.php')
 						    </tr>
 						    <tr>
 						      <th>Attached Document</th>
-						      <td><?php echo $row['complaint_related_docs'] ?></td>
+						      
+						      <td><?php if($row['complaint_related_docs'] != '') {
+										echo '<a class="text-decoration-none" href="'.'complaint_docs/'.$row['complaint_related_docs'].'" target="__blank">'. $row['complaint_related_docs'] .'</a>';
+									} 
+									else{
+										echo  "<strong>Document Not Uploaded</strong>";
+									}
+									?></td>
 						    </tr>
 						    <tr>
 						      <th>Complaint Status</th>

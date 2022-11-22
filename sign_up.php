@@ -47,7 +47,7 @@ require_once('php_scripts/student/register/student_register.php');
 							</div>
 							<div class="col-sm-6 col-md-6">
 								<label class="fw-bold">Roll No<span class="text-danger"> *<span></label>
-								<input type="number" class="form-control mt-1" required name="roll_no" value="<?php  if(isset($_POST['roll_no'])) { echo $_POST['roll_no']; }?>">
+								<input type="text" class="form-control mt-1" required name="roll_no" value="<?php  if(isset($_POST['roll_no'])) { echo $_POST['roll_no']; }?>">
 							</div>
 						</div>
 						<div class="row m-2">

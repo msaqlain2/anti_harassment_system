@@ -14,6 +14,8 @@ require_once('php_scripts/student/register_complaint/register_complaint.php');
 	<?php include('includes/student/header.php'); ?>
 	<div class="text-center mt-2">
 		<span class="text-success"><?php echo $complaint_success;  ?></span>
+		<span class="text-danger"><?php echo $complaint_error;  ?></span>
+		<span class="text-danger"><?php echo $extension_error;  ?></span>
 	</div>
 	<div class="container">
 		<div class="row mt-2">
@@ -67,7 +69,6 @@ require_once('php_scripts/student/register_complaint/register_complaint.php');
 						  	<div class="form-group mt-3">
 							    <input type="submit" class="btn btn-primary" name="register_complaint_btn" value="Register Complaint">
 						  	</div>
-
 						</form>
 					</div>
 				</div>

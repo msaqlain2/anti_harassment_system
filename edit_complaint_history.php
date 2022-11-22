@@ -1,6 +1,8 @@
 <?php 
+
 require_once('php_scripts/database/database_connection.php');
 require_once('php_scripts/student/complaint_history/view_complaint_history.php');
+require_once('php_scripts/student/complaint_history/edit_complaint_history.php');
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +28,7 @@ require_once('php_scripts/student/complaint_history/view_complaint_history.php')
 						</div>
 					</div>
 					<div class="card-body">
-						<form method="post">
+						<form method="post" enctype="multipart/form-data">
 							<div class="row">
 								<div class="col-sm-2 col-md-2"></div>
 								<div class="col-sm-4 col-md-4">
@@ -35,18 +37,24 @@ require_once('php_scripts/student/complaint_history/view_complaint_history.php')
 								</div>
 								<div class="col-sm-4 col-md-4">
 									<label>Type of Harassment</label>
-									<select class="form-control" required>
+									<select class="form-control" name="toh" required>
 										<option value="" selected disabled>Select Harassment Type</option>
 										<?php 
+										$query = "SELECT * FROM `harrasment_type`";
+										$run_query = mysqli_query($conn, $query);
+										if(mysqli_num_rows($run_query) > 0) {
 
-										// $query = "SELECT * FROM `harrasment_type`";
-										// $run_query = mysqli_query($conn, $query);
-										// var_dump($run_query);
-										// if(mysqli_num_rows($run_query) > 0) {
-										// 	while($data = mysqli_fetch_assoc($run_query)){
-										// 		echo '<option value="'.$data['id'].'">'. $data['harrasment_type'] .'</option>';
-										// 	}
-										// }
+											
+											while($data = mysqli_fetch_assoc($run_query)){
+												if($row['harrasment_type'] == $data['harrasment_type']) {
+													echo '<option selected value="'. $data['id'] .'">'. $data['harrasment_type'] .'</option>';	
+												}
+												else{
+													echo '<option value="'. $data['id'] .'">'. $data['harrasment_type'] .'</option>';
+												}
+											}
+										}
+
 										
 										?>
 									</select>
@@ -57,11 +65,12 @@ require_once('php_scripts/student/complaint_history/view_complaint_history.php')
 								<div class="col-sm-2 col-md-2"></div>
 								<div class="col-sm-4 col-md-4">
 									<label>Date of Harassment</label>
-									<input type="date" name="loh" class="form-control" required value="<?php echo date('Y-m-d',strtotime($row["date_of_harrasment"])) ?>">
+									<input type="date" name="doh" class="form-control" required value="<?php echo date('Y-m-d',strtotime($row["date_of_harrasment"])) ?>">
 								</div>
+								<input type="hidden" value="<?php echo $row['complaint_related_docs']  ?>" name="old_complaint_doc">
 								<div class="col-sm-4 col-md-4">
 									<label>Complaint Related Doc</label>
-									<input type="file" name="loh" class="form-control" required>
+									<input type="file" name="new_complaint_doc" class="form-control" >
 								</div>
 								<div class="col-sm-2 col-md-2"></div>
 							</div>
@@ -72,6 +81,23 @@ require_once('php_scripts/student/complaint_history/view_complaint_history.php')
 									<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required name="complaint_details"><?php echo $row['complaint_details'] ?></textarea>
 								</div>
 							</div>
+
+							<div class="row mt-3">
+								<div class="col-sm-2 col-md-2"></div>
+								<div class="col-sm-8 col-md-8">
+									<label>Current Uploaded Doc:</label>
+									<?php if($row['complaint_related_docs'] != '') {
+										echo '<a class="text-decoration-none" href="'.'complaint_docs/'.$row['complaint_related_docs'].'" target="__blank">'. $row['complaint_related_docs'] .'</a>';
+									} 
+									else{
+										echo  "<strong>Document Not Uploaded</strong>";
+									}
+									?>
+								</div>
+							</div>
+							<p class="text-center mt-2 text-success"><?php echo $update_success;  ?></p>
+							<p class="text-center mt-2 text-danger"><?php echo $update_error;  ?></p><p class="text-center mt-2 text-danger"><?php echo $extension_error;  ?></p>
+
 							<div class="row mt-3">
 								<div class="col-sm-5 col-md-5">
 									
@@ -79,7 +105,6 @@ require_once('php_scripts/student/complaint_history/view_complaint_history.php')
 								<div class="col-sm-4 col-md-4">
 									<input type="submit" class="btn btn-warning" name="update" value="Update Complaint">
 								</div>
-								
 							</div>
 						</form>
 					</div>

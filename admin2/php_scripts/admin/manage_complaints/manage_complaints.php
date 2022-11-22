@@ -1,7 +1,7 @@
 <?php
 // session_start();
 	
-$query = 'SELECT complaints.id,  complaints.location_of_harrasment, harrasment_type.harrasment_type, complaints.status, students.full_name FROM complaints, harrasment_type, students WHERE harrasment_type.id = complaints.type_of_harrasment AND students.id = complaints.student_id';
+$query = 'SELECT complaints.id,  complaints.location_of_harrasment, harrasment_type.harrasment_type, complaints.status, students.full_name, students.roll_number FROM complaints, harrasment_type, students WHERE harrasment_type.id = complaints.type_of_harrasment AND students.id = complaints.student_id';
 $result = mysqli_query($conn, $query);
 $count = 1;
 if(mysqli_num_rows($result) > 0) {
@@ -21,9 +21,10 @@ if(mysqli_num_rows($result) > 0) {
 			      <td>". $count++ ." </td>
 			      <td>". $row['full_name'] ."</td>
 			      <td>". $row['location_of_harrasment'] ."</td>
-			      <td>".$row['harrasment_type'] ."</td>
+			      <td>". $row['harrasment_type'] ."</td>
 			      
 			      <td>". $status ."</td>
+			      <td>". $row['roll_number'] ."</td>
 			     
 			      <td>	
 			        <a href='view_manage_complaints.php?id=$id' class='btn btn-info btn-circle'>

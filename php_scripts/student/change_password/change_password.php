@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if(isset($_POST['change_password'])) {
 	$current_password = $_POST['current_password'];	
@@ -8,10 +9,12 @@ if(isset($_POST['change_password'])) {
 
 	$query = "SELECT id, password FROM `students` WHERE id = '$id'";	
 	$run_query = mysqli_query($conn,$query);
+	
+
 	$row = mysqli_fetch_assoc($run_query);
 
 	if($current_password != $row['password']) {
-		$password_error = "Invalid Password, Please try again!";
+		$password_error = "Invalid Current Password, Please try again!";
 	}
 	elseif ($new_password != $confirm_password) {
 		$password_error= "Password Not Matched";
