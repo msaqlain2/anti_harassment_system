@@ -19,7 +19,7 @@ if(isset($_POST['change_password'])) {
 		$password_error= "Password Not Matched";
 	}
 	else{
-		$update_query = "UPDATE `admin` SET password = $new_password WHERE id = '1'";
+		$update_query = "UPDATE `admin` SET password = '$new_password' WHERE id = '1'";
 		$run_update_query = mysqli_query($conn, $update_query);
 
 		if($run_update_query) {
