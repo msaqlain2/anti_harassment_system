@@ -20,7 +20,6 @@ if(isset($_POST['change_password'])) {
 	else{
 		$update_query = "UPDATE `students` SET password = '$new_password' WHERE id = '$id'";
 		$run_update_query = mysqli_query($conn, $update_query);
-		var_dump($update_query);
 		if($run_update_query) {
 			$success_password = "Password has changed successfully";
 		}

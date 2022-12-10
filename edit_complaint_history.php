@@ -98,6 +98,7 @@ require_once('php_scripts/student/complaint_history/edit_complaint_history.php')
 							<p class="text-center mt-2 text-success"><?php echo $update_success;  ?></p>
 							<p class="text-center mt-2 text-danger"><?php echo $update_error;  ?></p><p class="text-center mt-2 text-danger"><?php echo $extension_error;  ?></p>
 
+
 							<div class="row mt-3">
 								<div class="col-sm-5 col-md-5">
 									

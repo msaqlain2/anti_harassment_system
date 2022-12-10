@@ -16,7 +16,7 @@ require_once('php_scripts/student/register/student_register.php');
 			<div class="row">
 				<div class="col-sm-6 col-md-6">
 					<h3 class="m-5">Student Registration</h3>
-					<form method="post">
+					<form method="post" enctype="multipart/form-data">
 						<div class="row m-2">
 							<div class="col">
 								<p class="text-danger fw-bold"><?php if(isset($password_error) == "POST"){
@@ -96,6 +96,13 @@ require_once('php_scripts/student/register/student_register.php');
 								</label>
 							</div>
 						</div>
+						<div class="row m-2">
+							<div class="col-sm-12 col-md-12">
+								<label class="fw-bold">Upload Profile Image</label>
+								<input type="file" class="form-control mt-1" name="profile_img">
+							</div>
+						</div>
+						<p class="text-center text-danger"><?php if(isset($extension_error)) { echo $extension_error; } ?></p>
 						<div class="row m-2 mt-3">
 							<div class="col-sm-12 col-md-12 d-grid gap-2">
 								<input type="submit" name="register" class="btn btn-primary btn-block"

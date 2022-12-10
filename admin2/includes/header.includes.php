@@ -86,7 +86,20 @@
                     <span>Students Login Log</span></a>
             </li>
 
-            
+
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Complaint Reports
+            </div>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="complaint_reports.php">
+                    <i class="fas fa-fw fa-file"></i>
+                    <span>Complaint Reports</span></a>
+            </li>
 
 
             <!-- Divider -->
@@ -112,9 +125,9 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">Girls Resuce</a>
-                        <a class="collapse-item" href="utilities-border.html">Students Affairs</a>
-                        <a class="collapse-item" href="utilities-animation.html">Rescue</a>
+                        <a class="collapse-item" href="official_login.php">Girls Resuce</a>
+                        <a class="collapse-item" href="official_login.php">Students Affairs</a>
+                        <a class="collapse-item" href="official_login.php">Police</a>
                     </div>
                 </div>
             </li>

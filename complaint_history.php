@@ -33,7 +33,8 @@ require_once('php_scripts/database/database_connection.php');
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <?php include('php_scripts/student/complaint_history/complaint_history.php'); ?>
+				    <?php 
+				     include('php_scripts/student/complaint_history/complaint_history.php'); ?>
 				  </tbody>
 				</table>
 					</div>

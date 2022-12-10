@@ -30,7 +30,7 @@ if(isset($_POST['register_complaint_btn'])) {
 	
 
 	if(!in_array($extension, $valid_extensions) AND $doc != '') {
-		$extension_error = "Not a valid extension for Complaint";
+		$extension_error = "Only jpeg, jpg, png, gif, pdf, doc formats are accepted for complaint doc!!!";
 	}
 	else{
 		$query = "INSERT INTO `complaints`(`student_id`, `location_of_harrasment`, `type_of_harrasment`, `date_of_harrasment`, `complaint_details`, `complaint_related_docs`, `status`, `created_at`) VALUES ('$user_id', '$loh', '$toh', '$doh', '$complaint_details', '$uploaded_doc', '0', '$created_at')";

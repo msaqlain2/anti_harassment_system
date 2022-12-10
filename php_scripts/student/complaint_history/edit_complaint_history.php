@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_POST['update'])) {
-
+	$id = $_GET['id'];
 	$loh = $_POST['loh'];
 	$toh = $_POST['toh'];
 	$doh = $_POST['doh'];
@@ -16,29 +16,26 @@ if(isset($_POST['update'])) {
 	$valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'pdf', 'doc');
 	$path = 'complaint_docs/';
 
-	if($new_complaint_doc != null) {
 
-		$final_doc = $new_complaint_doc;
-		$path = $path.strtolower($final_doc);
-		move_uploaded_file($tmp_doc, $path);
-		$complaint_doc = $final_doc;
-
+	
+	if($new_complaint_doc != '' AND in_array($extension, $valid_extensions)) {
+			$final_doc = $new_complaint_doc;
+			$path = $path.strtolower($final_doc);
+			move_uploaded_file($tmp_doc, $path);
+			$complaint_doc = $final_doc;	
 	}
-	else{
+
+	if($new_complaint_doc == ''){
 		$complaint_doc = $old_complaint_doc;
 	}
-
-	if(!in_array($extension, $valid_extensions) AND $new_complaint_doc != '') {
-		$extension_error = "Not a valid extension for complaint";
-
-	}
 	
-
+	if(!in_array($extension, $valid_extensions) AND $new_complaint_doc != '') {
+		$extension_error = "Only jpeg, jpg, png, gif, pdf, doc formats are accepted for complaint doc!!!";
+	}
 	else{
-
 		$query = "UPDATE `complaints` SET location_of_harrasment = '$loh', 
 		type_of_harrasment = '$toh', date_of_harrasment = '$doh', 
-		complaint_details = '$complaint_details', complaint_related_docs = '$complaint_doc' WHERE id = '$sid'";
+		complaint_details = '$complaint_details', complaint_related_docs = '$complaint_doc' WHERE id = '$id'";
 		$run_query = mysqli_query($conn, $query);
 		if($run_query) {
 			$update_success = "Compaint has Updated Successfully";
@@ -48,5 +45,6 @@ if(isset($_POST['update'])) {
 			$update_error = "Something went wrong";
 		}
 	}
+	
 
 }

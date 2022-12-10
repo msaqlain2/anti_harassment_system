@@ -18,6 +18,13 @@ if(isset($_POST['register'])) {
 	$confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
 	$gender = mysqli_real_escape_string($conn, $_POST['gender']);
 	$created_at = date('Y-m-d h:i:s');
+	$uploaded_img = '';
+	$profile = $_FILES['profile_img']['name'];
+	$profile_tmp = $_FILES['profile_img']['tmp_name'];
+	$extension = strtolower(pathinfo($profile, PATHINFO_EXTENSION));
+	$valid_extensions = array('jpeg', 'jpg', 'png', 'gif');
+	$path = 'profile_img/';
+
 	$select = "SELECT id, email FROM `students` WHERE email = '$email'";
 	$run_query = mysqli_query($conn, $select);
 
@@ -33,8 +40,24 @@ if(isset($_POST['register'])) {
 		$password_error = "* Password Not Matched";
 
 	}
+	else if(!in_array($extension, $valid_extensions) AND $profile != '') {
+		$extension_error = "Only jpeg, jpg, png, gif, formats are accepted for profile image!!!";
+	}
 	else{
-		$query = "INSERT INTO `students` (`full_name`, `email`, `roll_number`, `department`, `contact_number`, `password`, `gender`, `created_at`) VALUES ('$full_name', '$email', '$roll_no', '$department', '$contact_number', '$password', '$gender', '$created_at')";
+
+		if($profile != '') {
+		$final_img = $profile;
+		$path = $path.strtolower($final_img);
+		move_uploaded_file($profile_tmp, $path);
+		$uploaded_img = $final_img;
+			echo "ui";
+		}
+		elseif($profile == ''){
+			$uploaded_img = '';
+			echo "as";
+		}
+
+		$query = "INSERT INTO `students` (`full_name`, `email`, `roll_number`, `department`, `contact_number`, `password`, `gender`, `created_at`, `profile_pic`) VALUES ('$full_name', '$email', '$roll_no', '$department', '$contact_number', '$password', '$gender', '$created_at', '$uploaded_img')";
 		$result = mysqli_query($conn, $query);
 
 		echo "<script>alert('Account Created Successfully!')</script>";

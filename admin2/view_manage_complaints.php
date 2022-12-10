@@ -23,8 +23,16 @@ include('includes/header.includes.php'); ?>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Manage Complaint Reocrds of Students</h6>
+                            <div class="d-flex justify-content-between">
+                                <div class="p-2">
+                                    <h6 class="m-0 font-weight-bold text-primary">Manage Complaint Reocrds of Students</h6>
+                                </div>
+                                <div class="p-2">
+                                    <a href="send_report.php?id=<?php echo $_GET['id']; ?>" class="btn btn-primary" >Send Report <i class="fa fa-arrow-up"></i> </a>
+                                </div>
+                            </div>
                         </div>
+                            
                         <div class="card-body">
                             <div class="table-responsive" style="overflow: hidden">
                                 <div class="row" >

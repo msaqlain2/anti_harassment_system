@@ -13,5 +13,6 @@ if(isset($_POST['update_profile'])) {
 
 	if($run_query) {
 		echo "<script>alert('Your data has updated successfully')</script>";
+		header('location: profile.php');
 	}
 }

@@ -11,5 +11,19 @@ $(document).ready(function() {
                 }
 
         });
-	})
+	});
+
+    $('#changeReportStatusForm').on('change', function() {
+        var optionValue = jQuery(this).val();
+        var cid = $('#cid').val();
+        $.ajax({
+                url: "php_scripts/official_login/change_report_status.php", 
+                data: { "newValue": optionValue, "cid" : cid}, 
+                method: "POST",
+                success: function(data) {
+                    window.location.href = 'view_report.php?id='+cid;
+                }
+
+        });
+    });
 })
