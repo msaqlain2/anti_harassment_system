@@ -63,29 +63,6 @@
 
             
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <!-- <div class="sidebar-heading">
-                Students
-            </div> -->
-
-            <!-- Nav Item - Charts -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="manage_students.php">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Manage Students</span></a>
-            </li> -->
-
-
-            <!-- Nav Item - Students Login Log -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="students_login_log.php">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Students Login Log</span></a>
-            </li> -->
-
 
             <hr class="sidebar-divider">
 
