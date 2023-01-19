@@ -35,7 +35,7 @@ if(mysqli_num_rows($result) > 0) {
 			        <a href='view_reports.php?id=$id' class='btn btn-info btn-circle m-1'>
                         <i class='fas fa-eye' ></i>
                     </a>
-                    <a href='php_scripts/admin/manage_complaints/delete_complaint.php?id=$id' class='btn btn-danger btn-circle m-1' onclick='return checkDelete()'>
+                    <a href='php_scripts/admin/send_report/delete_complaint_report.php?id=$id' class='btn btn-danger btn-circle m-1' onclick='return checkDelete()'>
                         <i class='fas fa-trash'></i>
                     </a>
                     <a href='edit_report.php?id=$id' class='btn btn-warning btn-circle m-1'>
