@@ -25,8 +25,8 @@ error_reporting(0);
                                 <?php
 
                                     // if(isset($_POST['dept'])) {
-                                $condi = $_POST['dept'] == null ? "Girls Rescue" :  $_POST['dept'];
-                                echo $condi;
+                                // $condi = $_POST['dept'] == null ? "Girls Rescue" :  $_POST['dept'];
+                                // echo $condi;
                                 // }
 
                                     ?>

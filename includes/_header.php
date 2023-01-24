@@ -74,8 +74,6 @@
                 <a href="index.php" class="nav-item nav-link ">Home</a>
                 <a href="about.php" class="nav-item nav-link">About</a>
                 <a href="admin2/official_login.php" class="nav-item nav-link">Official Login</a>
-                
-                <a href="contact.php" class="nav-item nav-link">Contact</a>
             </div>
         </div>
     </nav>
